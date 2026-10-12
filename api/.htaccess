@@ -1,0 +1,8 @@
+# ============================================================
+# SSMUNIE — Protection des fichiers internes de l'API (F8)
+# Les fichiers _*.php et db.php sont inclus côté serveur uniquement.
+# ============================================================
+
+<FilesMatch "^(_.*\.php|db\.php|.*\.sql)$">
+  Require all denied
+</FilesMatch>

@@ -1,0 +1,18 @@
+# ============================================================
+# SSMUNIE — Protection du projet (F7)
+# En prod, le webroot doit être dist/ (seul api/ reste côté serveur).
+# Ici, on refuse l'accès web aux sources, migrations et documents.
+# ============================================================
+
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Dossiers sensibles : interdits
+  RewriteRule ^(sql|src|node_modules|docs|\.git)/ - [F,L]
+</IfModule>
+
+# Fichiers sensibles par extension : interdits
+<FilesMatch "\.(sql|md|json|lock|log|env|bak)$">
+  Require all denied
+</FilesMatch>
